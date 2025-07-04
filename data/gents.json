@@ -1,0 +1,83 @@
+{
+  "pageDescription": "The Gents Section has a full playing membership of around 80 who compete in our internal competitions which are run throughout the year. We also have teams who represent the club in the Paisley and District Bowling Association (P&DBA) league and cup competitions, Paisley Veterans Bowling Association (PVBA), as well as the competitions run by the Renfrewshire Bowling Association (RBA) and Bowls Scotland. In addition to the Association competitions we have a full itinerary of domestic competitions and events which are listed below.",
+  "keyPeople": [
+    {
+      "title": "Gents President",
+      "name": "David Watson",
+      "year": "2025/2026"
+    },
+    {
+      "title": "Gents Champion",
+      "name": "Stuart Cameron",
+      "year": "2025"
+    }
+  ],
+  "committee": [
+    { "role": "President", "name": "D. Watson" },
+    { "role": "Vice President", "name": "N. Campbell" },
+    { "role": "Imm Past President", "name": "T. Hindle" },
+    { "role": "Secretary", "name": "G. NcNidder" },
+    { "role": "Treasurer", "name": "T. Scholes" },
+    { "role": "Director", "name": "D. Bennie" },
+    { "role": "Director", "name": "J. Forbes" },
+    { "role": "Director", "name": "H. Kerr" },
+    { "role": "Director", "name": "D. Sprot" }
+  ],
+  "outdoorEvents": [
+  { "date": "2025-04-11", "name": "Opening Day", "description": "Start of the bowling season." },
+  { "date": "2025-04-26", "name": "Stamperland Friendly", "description": "Friendly match against Stamperland." },
+  { "date": "2025-04-28", "name": "Crawford Miller 1st Round", "description": "First round of the Crawford Miller competition." },
+  { "date": "2025-05-03", "name": "Mixed Pairs", "description": "Mixed pairs competition for members." },
+  { "date": "2025-05-05", "name": "Crawford Miller Final", "description": "Final round of the Crawford Miller competition." },
+  { "date": "2025-05-10", "name": "Gordon Forrest Trophy", "description": "Annual Gordon Forrest Trophy competition." },
+  { "date": "2025-05-26", "name": "Benefit Night", "description": "Special benefit night event for members and guests." },
+  { "date": "2025-06-06", "name": "P&D Ex-Presidents vs P&D BA", "description": "Match between P&D Ex-Presidents and P&D Bowling Association." },
+  { "date": "2025-06-14", "name": "Robertson Park Friendly", "description": "Friendly game at Robertson Park." },
+  { "date": "2025-06-26", "name": "VIBS Pairs", "description": "Visually Impaired Bowlers Scotland pairs competition." },
+  { "date": "2025-07-05", "name": "Morton Trophy Sponsored by Moodie", "description": "Morton Trophy event sponsored by Moodie." },
+  { "date": "2025-07-19", "name": "Leatherland Triples", "description": "Leatherland Triples competition." },
+  { "date": "2025-08-20", "name": "VIBS Singles", "description": "Visually Impaired Bowlers Scotland singles competition." },
+  { "date": "2025-08-30", "name": "2 Bowl Balloted Pairs", "description": "Two bowl pairs competition with ballot draw." },
+  { "date": "2025-09-08", "name": "MacAskill Trophy", "description": "Annual MacAskill Trophy match." },
+  { "date": "2025-09-16", "name": "Club HYGM", "description": "Half-yearly general meeting of the club." },
+  { "date": "2025-09-20", "name": "Provost Murray Fours", "description": "Provost Murray Fours competition." },
+  { "date": "2025-09-27", "name": "Closing Day", "description": "Closing day for the bowling season." },
+  { "date": "2025-03-13", "name": "Club AGM", "description": "Annual General Meeting of the club." },
+  { "date": "2025-03-20", "name": "Gents AGM", "description": "Annual General Meeting for the Gents section." }
+],
+  "outdoorResults": {
+    "year": 2024,
+    "competitions": [
+      { "name": "Championship", "winner": ["S. Cameron"], "runnerUp": ["K. MacAskill"] },
+      { "name": "Presidents", "winner": ["S. J. Pratt"], "runnerUp": ["S. Cameron"] },
+      { "name": "Heiton", "winner": ["S. Cameron"], "runnerUp": ["D. Bennie"] },
+      { "name": "Hellyer", "winner": ["W. Nelson"], "runnerUp": ["B. Rae"] },
+      { "name": "Watson Trophy (over 55s)", "winner": ["M. Pierotti"], "runnerUp": ["D. Sprotr"] },
+      { "name": "Nomination Pairs", "winner": ["M. Houston", "S. Cameron"], "runnerUp": ["J. Ballie", "T. McMillan"] },
+      { "name": "Ballot Pairs", "winner": ["D. Nelson", "M. Pierotti"], "runnerUp": ["S. J. Pratt", "D. Nelson"] },
+      { "name": "Seniors Nom Pairs", "winner": ["R. Morrow", "N. Rafferty"], "runnerUp": ["J. Ballie", "T. McMillan"] },
+      { "name": "Seniors Championship", "winner": ["R. Porter"], "runnerUp": ["N. Campbell"] },
+      { "name": "Seniors Ballot pairs", "winner": ["A. Storrie", "N. Rafferty"], "runnerUp": ["A. Archibald", "R. Porter"] },
+      { "name": "Leatherland Triples", "winner": ["A. Archibald", "J. Miller", "H. Kerr"], "runnerUp": [] },
+      { "name": "G. Forrest Triples", "winner": ["I. Nicholson", "T. McMillan", "A. McCorkindale"], "runnerUp": [] },
+      { "name": "Crawford Miller", "winner": ["M. Pierotti", "M. Hillin", "M. Ewing", "J. McGroarty"], "runnerUp": [] },
+      { "name": "Morton Trophy", "winner": ["A. Archibald", "I. Waddell", "R. Morrow", "N. Rafferty"], "runnerUp": [] }
+    ]
+  },
+  "shortCarpetResults": {
+    "year": 2024,
+    "competitions": [
+      { "name": "Championship", "winner": ["A. Russell"] },
+      { "name": "Nomination Pairs", "winner": ["M. Houston", "A. Russell"] },
+      { "name": "Ballot pairs", "winner": ["S. Dargavel", "R. Porter"] },
+      { "name": "Two Bowl Singles", "winner": ["M. Houston"] },
+      { "name": "Two Bowl Ballot Pairs", "winner": ["S. Dargavel", "R. Porter"] },
+      { "name": "Gartmore Triples", "winner": ["S. Dargavel", "T. McMillan", "D. Bennie"] },
+      { "name": "Wappenschaw Aggregate", "winner": ["M. Pierotti"] },
+      { "name": "Nanaimo Trophy", "winner": ["D. Bennie"] },
+      { "name": "Jim Colquhoun Trophy", "winner": ["D. Sprot","W. Nelson", "R. Porter"] },
+      { "name": "Senior Singles", "winner": ["R. Porter"] },
+      { "name": "Senior Nom Pairs", "winner": ["D. Sprot", "R. Porter"] }
+    ]
+  }
+}
