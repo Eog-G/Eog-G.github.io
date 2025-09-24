@@ -1,266 +1,797 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hawkhead Bowling Club - Paisley's Premier Bowling Club Since 1921</title>
-  <meta name="description"
-    content="Join Hawkhead Bowling Club in Paisley - Scotland's premier bowling club established in 1921. Welcoming community, excellent facilities, and competitive play for all skill levels." />
-  <meta name="author" content="Hawkhead Bowling Club" />
-  <meta name="keywords" content="bowling club, Paisley, Scotland, lawn bowls, sports club, membership, Hawkhead" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Molly!</title>
+    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&family=Poppins:wght@400;600&display=swap');
 
-  <meta property="og:title" content="Hawkhead Bowling Club - Paisley's Premier Bowling Club" />
-  <meta property="og:description"
-    content="Join Scotland's premier bowling club established in 1921. Welcoming community, excellent facilities, and competitive play." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://eog-g.github.io/assets/images/HBCLogo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@hawkheadbc" />
-  <meta name="twitter:image" content="https://eog-g.github.io/assets/images/HBCLogo.png" />
+        :root {
+            --bg-color: #f0e4d7;
+            --text-color: #3a3a3a;
+            --accent-color: #e57373;
+            --ticket1-bg: #ffcc80; /* Light Orange */
+            --ticket2-bg: #90caf9; /* Light Blue */
+            --ticket3-bg: #a5d6a7; /* Light Green */
+            --ticket4-bg: #ce93d8; /* Light Purple */
+            --ticket5-bg: #ef9a9a; /* Light Red */
+            --ticket6-bg: #ffab91; /* Light Deep Orange */
+        }
 
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
 
-  <link rel="stylesheet" href="style.css">
+        .container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
 
+        .ticket {
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+            position: relative;
+            /* overflow: hidden; is removed to allow punches to be visible */
+            background: #fff;
+
+            padding: 25px;
+            border-left: 15px solid;
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        /* Create the semicircular "punches" on the left and right edges of the ticket */
+        .ticket::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50px;
+            width: 50px;
+            background: var(--bg-color);
+            border-radius: 50%;
+        }
+
+        .ticket::after {
+            right: -25px;
+            box-shadow: inset 1px 0 1px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+        }
+
+        #ticket-1 { border-color: var(--ticket1-bg); }
+        #ticket-2 { border-color: var(--ticket2-bg); }
+        #ticket-3 { border-color: var(--ticket3-bg); }
+        #ticket-4 { border-color: var(--ticket4-bg); }
+        #ticket-5 { border-color: var(--ticket5-bg); }
+        #ticket-6 { border-color: var(--ticket6-bg); margin-top: 160px; }
+
+        .ticket-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 15px;
+        }
+
+        .ticket-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .ticket-header .icon {
+            font-size: 2.5rem;
+        }
+
+        .ticket-info {
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 10px 15px;
+            text-align: left;
+            align-items: center;
+        }
+
+        .ticket-info p {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .info-icon {
+            font-size: 1.3rem;
+            justify-self: center;
+        }
+
+        .photo-button, .ics-button {
+            background: none;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 5px;
+            transition: all 0.2s ease;
+            grid-column: 1 / -1; /* Span across all columns */
+        }
+
+        .photo-button:hover {
+            background: #eee;
+            border-color: #aaa;
+        }
+
+        #reveal-button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        #reveal-button:hover {
+            transform: scale(1.05);
+            background-color: #e55a5a;
+        }
+
+        #reveal-button:active {
+            transform: scale(0.98);
+        }
+
+        #final-message {
+            display: none;
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-top: 40px;
+            animation: popIn 1s ease-out;
+        }
+
+        .kiss-stop {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Lobster', cursive;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 10;
+        }
+
+        .drink-stop {
+            position: absolute;
+            top: 50%;
+            white-space: nowrap;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: var(--ticket2-bg); /* Using the blue from the cocktail ticket */
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 10;
+        }
+
+        .train-stop {
+            position: absolute;
+            white-space: nowrap;
+            top: 50%; /* Position it further down the line */
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: #bcaaa4; /* A warm, soft grey-brown */
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 10;
+        }
+
+        .path-connector {
+            display: none; /* Hidden by default */
+            height: 100px;
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Special longer path for the multi-stop journey */
+
+        /* Class to extend animation duration for the multi-stop path */
+
+        /* SVG Loop-da-loop styles */
+        .loop-path svg {
+            width: 250px;
+            height: 250px;
+        }
+
+        .loop-path .draw-path {
+            stroke-dasharray: 1000; /* A high value that is longer than the path */
+            stroke-dashoffset: 1000;
+            stroke: var(--accent-color);
+            stroke-width: 4px;
+            stroke-linecap: round;
+            fill: none;
+            animation: draw-svg-path 3s ease-out forwards;
+        }
+
+        /* Hide the default straight line when the loop is active */
+        .loop-path::before {
+            display: none;
+        }
+
+        .path-connector::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            background-image: linear-gradient(var(--accent-color) 60%, transparent 40%);
+            background-size: 4px 15px;
+            background-repeat: repeat-y;
+            transform: translateX(-50%);
+            height: 0; /* Start with 0 height */
+            animation: drawLine 2s ease-out forwards;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes drawLine {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        @keyframes draw-svg-path {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 700px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #modal-image {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -15px;
+            right: 15px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-nav {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -30px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background: rgba(0,0,0,0.3);
+            border: none;
+        }
+
+        .modal-nav.next { right: 0; border-radius: 3px 0 0 3px; }
+        .modal-nav.prev { left: 0; }
+        .modal-nav:hover { background-color: rgba(0,0,0,0.6); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+                /* Aligns content to the top on mobile, which is more natural */
+                align-items: flex-start; 
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .ticket {
+                padding: 20px 15px;
+                border-left-width: 10px;
+            }
+
+            .ticket-header h2 {
+                font-size: 1.2rem;
+                margin-left: 10px;
+            }
+
+            .ticket-header .icon {
+                font-size: 2rem;
+            }
+
+            .ticket-info p {
+                font-size: 1rem;
+            }
+
+            #reveal-button {
+                font-size: 1.1rem;
+                padding: 12px 25px;
+            }
+
+            #final-message {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <header class="site-header">
-    <div class="top-bar">
-      <div class="container top-bar-content">
-        <div class="contact-info">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span id="clubPhone">-</span>
-        </div>
-        <div class="contact-info">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-          <span id="clubEmail">-</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-header container">
-      <a href="/index.html" class="logo-link">
-    <div class="logo-area">
-        <div class="logo-icon">
-            <img src="assets/images/HBCLogo.png" alt="Hawkhead Bowling Club Crest">
-        </div>
-        <div>
-            <h1 class="logo-title">Hawkhead Bowling Club</h1>
-            <p class="logo-subtitle">Est. 1921</p>
-        </div>
-    </div>
-</a>
-
-      <nav class="desktop-nav">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="/Pages/Gents/index.html" class="nav-link">Gents</a>
-        <a href="/Pages/Ladies/index.html" class="nav-link">Ladies</a>
-        <a href="/Pages/Social/index.html" class="nav-link">Social</a>
-        <a href="/Pages/Contacts/index.html" class="nav-link">Contact</a>
-        <a href="/Pages/Photos/index.html" class="nav-link">Photos</a>
-      </nav>
-
-      <button id="mobile-menu-button" class="mobile-menu-button">
-        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon-svg"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon-svg hidden"><line x1="18" x2="6" y1="6" y2="18"></line><line x1="6" x2="18" y1="6" y2="18"></line></svg>
-      </button>
-    </div>
-
-    <nav id="mobile-menu" class="mobile-nav">
-      <a href="#" class="nav-link active">Home</a>
-      <a href="/Pages/Gents/index.html" class="nav-link">Gents</a>
-      <a href="/Pages/Ladies/index.html" class="nav-link">Ladies</a>
-      <a href="/Pages/Social/index.html" class="nav-link">Social</a>
-      <a href="/Pages/Contacts/index.html" class="nav-link">Contact</a>
-      <a href="/Pages/Photos/index.html" class="nav-link">Photos</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero-section" id="home">
-  <div class="hero-overlay"></div>
-  <div class="hero-content container">
-    
-    <div class="hero-text-box">
-      <h1 class="hero-title">
-        Welcome to
-        <span class="hero-subtitle">Hawkhead Bowling Club</span>
-      </h1>
-      <p class="hero-tagline">Established in 1921 • Over a Century of Excellence in Bowling</p>
-      <p class="hero-description">
-        Join our historic bowling club and become part of a tradition that spans generations.
-        Experience the finest facilities and warmest welcome in Paisley.
-      </p>
-      <div class="hero-buttons">
-        <a href="/Pages/Membership/index.html" class="button button-primary">
-          <span>Join Today</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="/Pages/About/index.html" class="button button-secondary">Learn More</a>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stat-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-        <h3 class="stat-number">150+</h3>
-        <p class="stat-label">Active Members</p>
-      </div>
-      <div class="stat-item">
-        <div class="stat-icon-wrapper">
-            <span class="material-symbols-outlined stat-icon">
-            trophy
-            </span>
-        </div>
-        <h3 id="years-of-history" class="stat-number">113</h3>
-        <p class="stat-label">Years of History</p>
-        </div>
-      <div class="stat-item">
-        <div class="stat-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stat-icon"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></div>
-        <h3 class="stat-number">30+</h3>
-        <p class="stat-label">Events Yearly</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="custom-shape-divider-top-1751552247">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-        </svg>
-    </div>
-
-</section>
-
-    <section class="features-section" id="facilities">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose Hawkhead Bowling Club?</h2>
-                <p class="section-subtitle">Experience the best in lawn bowling with our exceptional facilities and vibrant community</p>
-            </div>
-            <div class="features-grid">
-                <div class="home-card">
-                    <div class="feature-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                    <h3 class="feature-title">Welcoming Community</h3>
-                    <p class="feature-description">Join a friendly community of bowling enthusiasts who share your passion for the sport.</p>
-                </div>
-                <div class="home-card">
-                  <div class="feature-icon-wrapper">
-                  <span class="material-symbols-outlined feature-icon">
-                    trophy
-                  </span>
-                </div>                    
-            <h3 class="feature-title">Competitive Play</h3>
-                    <p class="feature-description">Participate in leagues, tournaments, and competitions throughout the bowling season.</p>
-                </div>
-                <div class="home-card">
-                    <div class="feature-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div>
-                    <h3 class="feature-title">Excellent Facilities</h3>
-                    <p class="feature-description">Enjoy our well-maintained greens, modern clubhouse, and comfortable social areas.</p>
-                </div>
-                <div class="home-card">
-                    <div class="feature-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feature-icon"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg></div>
-                    <h3 class="feature-title">Year-Round Events</h3>
-                    <p class="feature-description">From social gatherings to championship matches, there's always something happening at the club.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="news-section" id="events">
     <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Upcoming Events</h2>
-            <p class="section-subtitle">Stay up to date with the next events happening at the club</p>
-        </div>
-        <div class="news-grid">
+        <h1 id="main-title">Molly's Birthday Night!</h1>
+
+        <!-- Ticket 1: Restaurant -->
+        <div class="ticket" id="ticket-1">
+            <div class="ticket-header">
+                <h2>First Stop: Dinner</h2>
+                <div class="icon">🍽️</div>
             </div>
-        <div class="section-footer">
-            <a href="/Pages/Social/index.html#social-events-timeline" class="button button-primary">
-                View All Social Events
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="button-icon"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
+            <div class="ticket-info">
+                <span class="info-icon">📍</span><p>Malocchio</p>
+                <span class="info-icon">⏰</span><p>6:00 PM</p>
+                <span class="info-icon">🎟️</span><p>Reserved for 2</p>
+                <button class="photo-button" data-gallery="ticket-1">📷 View Photos</button>
+                <button class="ics-button" data-event-id="1">🗓️ Add to Calendar</button>
+            </div>
+        </div>
+
+        <div class="path-connector" id="path-1"></div>
+
+        <!-- Ticket 2: Bar -->
+        <div class="ticket" id="ticket-2">
+            <div class="ticket-header">
+                <h2>Next Up: Cocktails</h2>
+                <div class="icon">🍸</div>
+            </div>
+            <div class="ticket-info">
+                <span class="info-icon">📍</span><p>Kloud</p>
+                <span class="info-icon">⏰</span><p>7:15 PM</p>
+                <span class="info-icon">🎟️</span><p>Let's see what all the fuss is about!</p>
+                <button class="ics-button" data-event-id="2">🗓️ Add to Calendar</button>
+            </div>
+        </div>
+
+        <div class="path-connector" id="path-2">
+            <div class="drink-stop">cocktail can for the train 🍹</div>
+        </div>
+
+        <!-- Ticket 3: Activity -->
+        <div class="ticket" id="ticket-3">
+            <div class="ticket-header">
+                <h2>Then: The Main Event!</h2>
+                <div class="icon">🌃</div>
+            </div>
+            <div class="ticket-info">
+                <span class="info-icon">📍</span><p>Glasglow 2025</p>
+                <span class="info-icon">⏰</span><p>8:30 PM</p>
+                <span class="info-icon">🎟️</span><p>No marshmallowtinis please!</p>
+                <button class="ics-button" data-event-id="3">🗓️ Add to Calendar</button>
+            </div>
+        </div>
+
+        <div class="path-connector" id="path-3">
+            <div class="kiss-stop">quick kiss 😘</div>
+        </div>
+
+        <!-- Ticket 4: Another Bar -->
+        <div class="ticket" id="ticket-4">
+            <div class="ticket-header">
+                <h2>Next Stop: Books!</h2>
+                <div class="icon">📚</div>
+            </div>
+            <div class="ticket-info">
+                <span class="info-icon">📍</span><p>Hillhead Bookclub</p>
+                <span class="info-icon">⏰</span><p>9:30 PM - 10:30 PM</p>
+                <span class="info-icon">🎟️</span><p>Table for 2</p>
+                <button class="ics-button" data-event-id="4">🗓️ Add to Calendar</button>
+            </div>
+        </div>
+
+        <div class="path-connector" id="path-4">
+            <div class="train-stop">Underground train 🚇</div>
+        </div>
+
+        <!-- Ticket 5: Tabac -->
+        <div class="ticket" id="ticket-5">
+            <div class="ticket-header">
+                <h2>Back to the Classics!</h2>
+                <div class="icon">🕯️</div>
+            </div>
+            <div class="ticket-info">
+                <span class="info-icon">📍</span><p>Tabac</p>
+                <span class="info-icon">⏰</span><p>11:00 PM</p>
+                <span class="info-icon">🎟️</span><p>Walk-in!</p>
+                <button class="ics-button" data-event-id="5">🗓️ Add to Calendar</button>
+            </div>
+        </div>
+
+        <div class="path-connector" id="path-5">
+            <!-- SVG for the loop-da-loop -->
+            <svg viewBox="0 0 150 250" xmlns="http://www.w3.org/2000/svg">
+                <path class="draw-path" d="M 75,0 v 50 c 0,50 -100,50 -100,100 s 100,50 100,0 c 0,-50 100,-50 100,0 s -100,50 -100,100 v 50" />
+            </svg>
+        </div>
+
+        <div class="ticket" id="ticket-6"> <!-- This is the Finisher ticket -->
+            <div class="ticket-header">
+                <h2>The Traditional Finisher</h2>
+                <div class="icon">🍻</div>
+            </div>
+            <div class="ticket-info">
+                <span class="info-icon">📍</span><p>Kitty O'Shea's</p>
+                <span class="info-icon">⏰</span><p>12:00 PM +</p>
+                <span class="info-icon">🎟️</span><p>Vodka club lemon?</p>
+                <button class="ics-button" data-event-id="6">🗓️ Add to Calendar</button>
+            </div>
+        </div>
+
+
+        <button id="reveal-button">Ready?</button>
+        <div id="final-message">Love you lots! ❤️</div>
+    </div>
+
+    <!-- Photo Modal -->
+    <div id="photo-modal" class="modal-backdrop">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modal-image" src="" alt="Date Night Sneak Peek">
+            <button class="modal-nav prev">&#10094;</button>
+            <button class="modal-nav next">&#10095;</button>
         </div>
     </div>
-</section>
 
-<section class="sponsors-section" id="sponsors">
-        <div class="container">
-            <div class="section-header">
-                <h2 id="sponsors-title" class="section-title"></h2>
-                <p id="sponsors-subtitle" class="section-subtitle"></p>
-            </div>
-            <div id="sponsors-grid" class="sponsors-grid">
-                </div>
-        </div>
-    </section>
-  </main>
-  
-<div class="footer-shape-divider">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-    </svg>
-</div>
 
-  <footer class="site-footer" id="contact">
-        <div>
-            <h3 class="footer-heading">Contact Us</h3>
-            <div class="footer-contact-info">
-                <div class="footer-contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <div>
-                        <p>Hawkhead Bowling Club</p>
-                        <p>Hawkhead Road</p>
-                        <p>Paisley, PA2 7BJ</p>
-                    </div>
-                </div>
-                <div class="footer-contact-item">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    <p>0141 884 2361</p>
-                </div>
-                <div class="footer-contact-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-icon"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    <p>info@hawkheadbowlingclub.co.uk</p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h3 class="footer-heading">Opening Hours</h3>
-            <div class="footer-contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <div>
-                    <p class="font-medium">Season: April - September</p>
-                </div>
-            </div>
-            <div class="opening-hours-details">
-                <p>Monday - Friday: 6:00 PM - 9:00 PM</p>
-                <p>Saturday: 2:00 PM - 5:00 PM</p>
-                <p>Sunday: 2:00 PM - 5:00 PM</p>
-            </div>
-        </div>
-        <div>
-            <h3 class="footer-heading">Quick Links</h3>
-            <div class="quick-links">
-                <a href="#membership" class="footer-link">Become a Member</a>
-                <a href="#events" class="footer-link">Upcoming Events</a>
-                <a href="#facilities" class="footer-link">Club Facilities</a>
-            </div>
-            <div>
-                <h4 class="footer-subheading">Follow Us</h4>
-                <div class="social-links">
-                    <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                    <a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 1.4 3.3 4.9 3 7.1 0 .8-.4 1.5-.9 2.1-.5.6-1.2.9-2.1.9h-1.1c-1.3 0-2.6-.5-3.6-1.4-1-.9-1.8-2.1-2.3-3.4-1.3 1.1-2.8 1.9-4.5 2.3s-3.5-.1-5-1c-1.4-.9-2.4-2.3-2.8-4-.5-1.7-.1-3.5.9-5 .9-1.5 2.4-2.7 4.1-3.2 2.4-.6 5.1.3 7 2.2-1.1-.1-2.2-.2-3.3-.4-1.4-.3-2.8-.8-4.1-1.5-1-.5-2-1.2-2.8-2.1-.8-.9-1.4-2-1.7-3.1-.3-1 .2-2.1 1.1-2.8.9-.7 2.1-1 3.2-1 .9-.1 1.9 0 2.8.3 1.1.4 2.1 1 3.1 1.7 1.9 1.4 4.2 2.1 6.7 2.1.3 0 .6 0 .9-.1.6 0 1.1.2 1.5.7.4.5.6 1.1.5 1.7z"/></svg></a>
-                </div>
-            </div>
-        </div>
-   
-  </footer>
+    <script>
+        const revealButton = document.getElementById('reveal-button');
+        const tickets = [
+            document.getElementById('ticket-1'),
+            document.getElementById('ticket-2'),
+            document.getElementById('ticket-3'),
+            document.getElementById('ticket-4'),
+            document.getElementById('ticket-5'),
+            document.getElementById('ticket-6')
+        ];
+        const paths = [
+            document.getElementById('path-1'),
+            document.getElementById('path-2'),
+            document.getElementById('path-3'),
+            document.getElementById('path-4'),
+            document.getElementById('path-5')
+        ];
+        const finalMessage = document.getElementById('final-message');
+        const mainTitle = document.getElementById('main-title');
 
-  <script src="script.js"></script>
+        // --- PHOTO GALLERY SETUP ---
+        // ** IMPORTANT: Replace these placeholder URLs with your actual image URLs! **
+        const photoGalleries = {
+            'ticket-1': ['https://lh3.googleusercontent.com/p/AF1QipNcDiZZpD94OyUljbfSJ_tJIRwVFKOg1ovXJUMm=s680-w680-h510-rw', 
+            'https://scontent.flba1-1.fna.fbcdn.net/v/t51.82787-15/549285637_17857742250510200_6390947702780045018_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=yWpZx_KTK5MQ7kNvwGBiNvQ&_nc_oc=AdlWphrFf5znu_QVzFVhycK8VXFiZ6aG9zISTr8We8BdyqdY_QeioS0oJzhsC5mkjKD0QV9ca75fYgFTeO-Mvb2A&_nc_zt=23&_nc_ht=scontent.flba1-1.fna&_nc_gid=kTAbyADLAy83gUM0mEAw5w&oh=00_AfaQRy8GHLQEh6lAz8yiAZ9tFB7WJ3A72NguD93FuZLGdA&oe=68DA44D5',
+            'https://scontent.fbrs5-1.fna.fbcdn.net/v/t51.82787-15/543107696_17856776784510200_295232090035635437_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=PVN6KmlVDnMQ7kNvwG9o8vb&_nc_oc=AdlysAuI59hyT_yLDz_qVMGi6IdCD7P8ZHGdEPQQX0NX0LBBgqnfoAva9c3Pk1b5D5iX4zYU_PoDPHlUvykppvYz&_nc_zt=23&_nc_ht=scontent.fbrs5-1.fna&_nc_gid=MHAEc12MXxMjZzVWQNCX8w&oh=00_AfYu4482nFWcL-HqGdwObqASGr80wAz3CTUi0wssUz0J6g&oe=68DA4135',
+            'https://scontent.flba1-1.fna.fbcdn.net/v/t39.30808-6/546226235_122132951102937812_8213951682123397608_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=yJIl1B44umMQ7kNvwF9P-3M&_nc_oc=AdnsG5bbvaYbASmxjSo1PHuPuMY5g-mT6SrWwDGjmko_z4QvSWwB7Fo98zwy_zYb5MMdOqTJmgPUThuYX7phgx0U&_nc_zt=23&_nc_ht=scontent.flba1-1.fna&_nc_gid=kiZMD7Elj5P8oHJ7OcvFsA&oh=00_AfYLpMcBTiH_y_bZHG8mUzTvC9WPDQDWbo__OTOSoALwFg&oe=68DA25CB',
+            'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npk_jH62Yalj688DuEOJmLzngCi1HwaJdSpDgOWD3c08bNIq2TeJTOlXYd2J8XnFigs7_IZE__Rs3r3cCU1ULzt5zEoLvKX8TvBHrnEECPVDYahvws8fneGSgJ6jlzSZQu0oJj_gILRb5Zl=s680-w680-h510-rw'
+        ],
+        };
+
+        const modal = document.getElementById('photo-modal');
+        const modalImage = document.getElementById('modal-image');
+        let currentGallery = [];
+        let currentPhotoIndex = 0;
+        // --- END PHOTO GALLERY SETUP ---
+
+        // --- ICS CALENDAR EVENT SETUP ---
+        // ** IMPORTANT: Set the correct date for your date night! Format: YYYY-MM-DD **
+        const eventDate = '2024-09-21';
+        const eventDetails = {
+            '1': { summary: "Dinner at Malocchio", location: "Malocchio", description: "Molly's Birthday Dinner!", startTime: '18:00', endTime: '19:15', filename: 'dinner-malocchio.ics' },
+            '2': { summary: "Cocktails at Kloud", location: "Kloud", description: "Let's see what all the fuss is about!", startTime: '19:15', endTime: '20:30', filename: 'cocktails-kloud.ics' },
+            '3': { summary: "The Main Event: Glasglow 2025", location: "Glasglow 2025", description: "No marshmallowtinis please!", startTime: '20:30', endTime: '21:30', filename: 'main-event-glasglow.ics' },
+            '4': { summary: "Books at Hillhead Bookclub", location: "Hillhead Bookclub", description: "Table for 2", startTime: '21:30', endTime: '22:30', filename: 'hillhead-bookclub.ics' },
+            '5': { summary: "Back to the Classics: Tabac", location: "Tabac", description: "Walk-in!", startTime: '23:00', endTime: '00:00', filename: 'classics-tabac.ics' },
+            '6': { summary: "The Traditional Finisher: Kitty O'Shea's", location: "Kitty O'Shea's", description: "Vodka club lemon?", startTime: '00:00', endTime: '01:00', filename: 'finisher-kittys.ics' }
+        };
+        // Note: For events after midnight, the calendar will correctly place them on the next day.
+        // --- END ICS CALENDAR EVENT SETUP ---
+
+
+        let currentStep = 0;
+
+        const buttonTexts = [
+            "What's next?",
+            "And after that?",
+            "Keep it going...",
+            "And then?",
+            "And that's our night!",
+            "Hope you're excited!"
+        ];
+
+        let isAnimating = false;
+
+        revealButton.addEventListener('click', () => {
+            if (isAnimating) return; // Prevent clicks during animation
+
+            // First click reveals the first ticket instantly
+            if (currentStep === 0) {
+                revealTicket(currentStep);
+                return;
+            }
+
+            // Subsequent clicks draw a path, then reveal the next ticket
+            if (currentStep < tickets.length) {
+                drawPathAndRevealNext();
+            } else {
+                // This handles the final click after the last ticket is revealed
+                revealButton.style.display = 'none';
+                finalMessage.style.display = 'block';
+
+                // Grand finale confetti burst!
+                party.confetti(finalMessage, {
+                    count: party.variation.range(80, 120),
+                    spread: 80,
+                    colors: ['#ffcc80', '#90caf9', '#a5d6a7', '#ce93d8', '#ef9a9a', '#ffab91', '#e57373']
+                });
+
+                setTimeout(() => {
+                    finalMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+
+            }
+        });
+
+        function drawPathAndRevealNext() {
+            isAnimating = true;
+            revealButton.style.display = 'none'; // Hide the button during animation
+
+            if (currentStep === 2) { // Before ticket 3 (Activity), now has only one stop
+                handleSpecialPath(1, '.drink-stop', 2000, 2500);
+            } else if (currentStep === 3) { // Before ticket 4 (Nightcap)
+                handleSpecialPath(2, '.kiss-stop', 2000, 2500);
+            } else if (currentStep === 4) { // Before ticket 5 (Tabac)
+                handleSpecialPath(3, '.train-stop', 2000, 2500); // Use standard 2s animation timings
+            } else if (currentStep === 5) { // Before ticket 6 (Finisher)
+                const path = paths[4]; // This is path-5
+                path.classList.add('loop-path'); // Add class to trigger SVG animation
+                path.style.display = 'block';
+                path.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                setTimeout(() => {
+                    revealTicket(currentStep);
+                }, 3000); // Wait for 3s loop animation
+            } else {
+                // Regular path drawing
+                const path = paths[currentStep - 1];
+                path.style.display = 'block';
+                // CORRECTED SCROLL: Scroll the now-visible path into the center
+                path.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Wait for the path animation to finish (2000ms = 2s)
+                setTimeout(() => {
+                    revealTicket(currentStep);
+                }, 2000);
+            }
+        }
+
+        function handleSpecialPath(pathIndex, messageSelector, animationTime, revealTime) {
+            const path = paths[pathIndex];
+            const message = path.querySelector(messageSelector);
+
+            path.style.display = 'block';
+            // CORRECTED SCROLL: Scroll the now-visible path into the center
+            path.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            setTimeout(() => {
+                message.style.opacity = '1';
+                message.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, animationTime / 2);
+            setTimeout(() => revealTicket(currentStep), revealTime);
+        }
+
+        function revealTicket(step) {
+            const ticketToReveal = tickets[step];
+            ticketToReveal.style.display = 'block';
+            
+            // Trigger confetti matching the ticket color!
+            const ticketColor = window.getComputedStyle(ticketToReveal).borderColor;
+            party.confetti(ticketToReveal, {
+                count: party.variation.range(40, 60),
+                colors: [ticketColor]
+            });
+
+            setTimeout(() => ticketToReveal.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+
+            revealButton.textContent = buttonTexts[step];
+            revealButton.parentElement.appendChild(revealButton);
+            currentStep++;
+
+            if (currentStep === tickets.length) {
+                revealButton.textContent = buttonTexts[step]; // Update for the final message reveal
+            }
+
+            isAnimating = false;
+            revealButton.style.display = 'inline-block'; // Show the button again, correctly centered
+        }
+
+        // --- MODAL SCRIPTING ---
+        function openModal(galleryId) {
+            currentGallery = photoGalleries[galleryId];
+            if (!currentGallery || currentGallery.length === 0) return;
+
+            currentPhotoIndex = 0;
+            modal.style.display = 'block';
+            showPhoto(currentPhotoIndex);
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function showPhoto(index) {
+            modalImage.src = currentGallery[index];
+            // Hide/show nav buttons if at start/end of gallery
+            document.querySelector('.modal-nav.prev').style.display = index === 0 ? 'none' : 'block';
+            document.querySelector('.modal-nav.next').style.display = index === currentGallery.length - 1 ? 'none' : 'block';
+        }
+
+        function changePhoto(direction) {
+            currentPhotoIndex += direction;
+            showPhoto(currentPhotoIndex);
+        }
+
+        // Event listeners for modal
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('photo-button')) {
+                openModal(e.target.dataset.gallery);
+            }
+            if (e.target.classList.contains('ics-button')) {
+                generateAndDownloadICS(e.target.dataset.eventId);
+            }
+        });
+
+        document.querySelector('.modal-close').addEventListener('click', closeModal);
+        document.querySelector('.modal-nav.prev').addEventListener('click', () => changePhoto(-1));
+        document.querySelector('.modal-nav.next').addEventListener('click', () => changePhoto(1));
+
+        // Close modal if clicking on the backdrop
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // --- ICS SCRIPTING ---
+        function generateAndDownloadICS(eventId) {
+            const event = eventDetails[eventId];
+            if (!event) return;
+
+            // Helper to format date/time into YYYYMMDDTHHMMSSZ format
+            const formatDT = (time) => {
+                const [hours, minutes] = time.split(':');
+                let date = new Date(`${eventDate}T${time}:00`);
+                // Handle post-midnight events (before 5 AM) by adding a day
+                if (parseInt(hours, 10) < 5) { // Assuming events before 5 AM are on the "next day"
+                    date.setDate(date.getDate() + 1);
+                }
+                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//DateNightReveal//EN',
+                'BEGIN:VEVENT',
+                `UID:${eventId}-${Date.now()}@datenight.com`,
+                `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'}`,
+                `DTSTART:${formatDT(event.startTime)}`,
+                `DTEND:${formatDT(event.endTime)}`,
+                `SUMMARY:${event.summary}`,
+                `DESCRIPTION:${event.description}`,
+                `LOCATION:${event.location}`,
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+
+            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = event.filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 
 </body>
-
 </html>
